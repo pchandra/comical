@@ -279,12 +279,12 @@ void ComicalFrame::OnClose(wxCloseEvent& event)
 
 	wxRect frameDim = GetRect();
 	config->Write(wxT("CacheLength"), (int) cacheLen);
-	config->Write(wxT("Zoom"), zoom);
+	//config->Write(wxT("Zoom"), zoom);
 	config->Write(wxT("ZoomLevel"), zoomLevel);
 	config->Write(wxT("FitOnlyOversize"), fitOnlyOversize);
-	config->Write(wxT("Filter"), filter);
-	config->Write(wxT("Mode"), mode);
-	config->Write(wxT("Direction"), direction);
+	//config->Write(wxT("Filter"), filter);
+	//config->Write(wxT("Mode"), mode);
+	//config->Write(wxT("Direction"), direction);
 	config->Write(wxT("FrameWidth"), frameDim.width);
 	config->Write(wxT("FrameHeight"), frameDim.height);
 	config->Write(wxT("FrameX"), frameDim.x);
@@ -309,7 +309,7 @@ void ComicalFrame::OnOpen(wxCommandEvent& event)
 {
 	wxString cwd;
 	config->Read(wxT("CWD"), &cwd);
-	wxString filename = wxFileSelector(wxT("Open a Comic Book"), cwd, wxT(""), wxT(""), wxT("Comic Books (*.cbr,*.cbz,*.rar,*.zip)|*.cbr;*.CBR;*.cbz;*.CBZ;*.rar;*.RAR;*.zip;*.ZIP"), wxOPEN | wxCHANGE_DIR | wxFILE_MUST_EXIST, this);
+	wxString filename = wxFileSelector(wxT("Open a Comic Book"), cwd, wxT(""), wxT(""), wxT("Comic Books (*.cbr,*.cbz,*.rar,*.zip)|*.cbr;*.CBR;*.cbz;*.CBZ;*.rar;*.RAR;*.zip;*.ZIP"), wxFD_OPEN | wxFD_CHANGE_DIR | wxFD_FILE_MUST_EXIST, this);
 
 	if (!filename.empty())
 		OpenFile(filename);
